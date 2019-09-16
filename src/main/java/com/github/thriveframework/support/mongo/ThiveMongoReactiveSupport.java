@@ -11,5 +11,5 @@ import java.lang.annotation.*;
 @Inherited
 @EnableReactiveMongoRepositories
 @Import({ThriveMongoConfig.class, })
-public @interface ThiveMongoSupport {
+public @interface ThiveMongoReactiveSupport {
 }

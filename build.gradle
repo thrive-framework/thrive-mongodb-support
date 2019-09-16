@@ -13,6 +13,8 @@ buildscript {
     }
 }
 
+group = "com.github.thrive-framework"
+
 apply plugin: "com.github.thrive-versioning"
 apply plugin: "com.github.thrive"
 apply plugin: "com.github.thrive-package"
@@ -26,30 +28,31 @@ thrive {
 
 thrivePackage {
     layout {
-        main {
-            name = "mongo"
-            image = "mongo:4.0.4"
-            command = "mongod"
+        core {
+            main {
+                name = "mongo"
+                image = "mongo:4.0.4"
+                command = "mongod"
+            }
             //todo support for volumes!
-
-            //fixme facets need fixing
-//            facets {
-//                local {
-//                    port 27017
-//                }
-//            }
         }
-//        services {
-//            "mongo-express" {
-//                image = "mongo-express:0.49"
-//
-//            }
-//        }
+        facet("local") {
+            main {
+                port 27017
+            }
+        }
+        facet("ui") {
+            services {
+                "mongo-express" {
+                    image = "mongo-express:0.49"
+                }
+            }
+        }
     }
 }
 
 dependencies {
-    implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+    api('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
 }
 
 wrapper {

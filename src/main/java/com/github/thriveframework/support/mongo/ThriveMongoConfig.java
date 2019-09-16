@@ -6,6 +6,11 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 
+/**
+ * This has no -Reactive- infix, because this only provides property sources right now.
+ * If we'd want blocking Mongo support as well, we should split this module into
+ * core/reactive/blocking and keep properties as close as possible.
+ */
 @Configuration
 @Slf4j
 @PropertySource({
