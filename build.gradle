@@ -13,9 +13,11 @@ buildscript {
     }
 }
 
+apply plugin: "com.github.thrive-versioning"
+
+//todo I think group needs to be set before package plugin, but I also think something's wrong with versioning
 group = "com.github.thrive-framework"
 
-apply plugin: "com.github.thrive-versioning"
 apply plugin: "com.github.thrive"
 apply plugin: "com.github.thrive-package"
 
@@ -29,7 +31,7 @@ thrive {
 thrivePackage {
     layout {
         core {
-            main {
+            mainService {
                 name = "mongo"
                 image = "mongo:4.0.4"
                 command = "mongod"
@@ -37,7 +39,7 @@ thrivePackage {
             //todo support for volumes!
         }
         facet("local") {
-            main {
+            mainService {
                 port 27017
             }
         }

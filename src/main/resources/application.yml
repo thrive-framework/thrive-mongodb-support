@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      database: ${thrive.app.client.id}
+      host: mongo
+      port: 27017
+---
+
+spring:
+  profiles: local
+  data:
+    mongodb:
+      host: localhost
