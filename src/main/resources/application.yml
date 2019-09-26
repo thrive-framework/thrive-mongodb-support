@@ -2,12 +2,21 @@ spring:
   data:
     mongodb:
       database: ${thrive.app.client.id}
-      host: mongo
+      host: ${thrive.db.mongo.host}
       port: 27017
 ---
 
 spring:
+  profiles: "!local"
+thrive:
+  db:
+    mongo:
+      host: mongo
+---
+
+spring:
   profiles: local
-  data:
-    mongodb:
+thrive:
+  db:
+    mongo:
       host: localhost
